@@ -1,0 +1,142 @@
+.layout{
+
+display:flex;
+height:100vh;
+
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+width:220px;
+background:#2c3e50;
+color:white;
+padding:20px;
+
+}
+
+.logo{
+
+margin-bottom:30px;
+text-align:center;
+
+}
+
+.sidebar ul{
+
+list-style:none;
+padding:0;
+
+}
+
+.sidebar li{
+
+padding:15px;
+cursor:pointer;
+border-radius:6px;
+margin-bottom:10px;
+
+}
+
+.sidebar li:hover{
+
+background:#34495e;
+
+}
+
+/* CONTENIDO */
+
+.content{
+
+flex:1;
+padding:40px;
+
+}
+
+.welcome{
+
+font-size:32px;
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+color:#666;
+margin-bottom:30px;
+
+}
+
+.cards{
+
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+
+}
+
+.card{
+
+background:white;
+padding:25px;
+border-radius:12px;
+width:250px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+}
+
+.number{
+
+font-size:40px;
+font-weight:bold;
+color:#4CAF50;
+
+}
+
+.card button{
+
+margin-top:10px;
+padding:10px;
+border:none;
+background:#4CAF50;
+color:white;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+.card button:hover{
+
+background:#3e8e41;
+
+}
+
+.motivation{
+
+margin-top:40px;
+padding:20px;
+background:#f5f5f5;
+border-radius:10px;
+
+}
+
+.logout-btn{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+
+  z-index: 1000;
+}
+
+.logout-btn:hover{
+  background: #e60000;
+} 

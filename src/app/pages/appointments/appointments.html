@@ -1,0 +1,51 @@
+<div class="appointments-page">
+
+<h1 class="title">Citas Psicológicas</h1>
+
+<button class="back-btn" (click)="goBack()">
+⬅ Volver
+</button>
+
+<div class="section">
+
+<h2>Agendar nueva cita</h2>
+
+<input type="date" [(ngModel)]="date">
+
+<input type="time" [(ngModel)]="time">
+
+<button (click)="createAppointment()">
+Agendar cita
+</button>
+
+</div>
+
+<div class="section">
+
+<h2>Tus citas</h2>
+
+<div *ngIf="appointments.length === 0">
+<p>No tienes citas registradas</p>
+</div>
+
+<div *ngFor="let a of appointments; let i = index" class="appointment-card">
+
+<p><b>Fecha:</b> {{a.date}}</p>
+
+<p><b>Hora:</b> {{a.time}}</p>
+
+<p><b>Estado:</b> {{a.status}}</p>
+
+<button
+(click)="enterSession(i)"
+[disabled]="a.status === 'Sin respuesta'">
+
+Entrar a sesión
+
+</button>
+
+</div>
+
+</div>
+
+</div>

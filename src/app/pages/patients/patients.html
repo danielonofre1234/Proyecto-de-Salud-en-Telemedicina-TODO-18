@@ -1,0 +1,92 @@
+<div class="patients-page">
+
+  <h1 class="title">Perfil del Paciente</h1>
+
+  <button class="back-btn" (click)="goBack()">⬅ Volver</button>
+
+  <!-- FORMULARIO -->
+  <div *ngIf="!savedPatient" class="form-card">
+
+    <h2>Registrar paciente</h2>
+
+    <input type="text" placeholder="Nombre" [(ngModel)]="name">
+    <input type="number" placeholder="Edad" [(ngModel)]="age">
+    <input type="text" placeholder="Teléfono" [(ngModel)]="phone">
+    <input type="email" placeholder="Correo" [(ngModel)]="email">
+
+    <button (click)="savePatient()">Guardar datos</button>
+
+  </div>
+
+  <!-- PERFIL -->
+  <div *ngIf="savedPatient" class="profile-card">
+
+    <h2>Datos del paciente</h2>
+
+    <!-- NOMBRE -->
+    <div class="field">
+      <label>Nombre</label>
+
+      <span *ngIf="editField !== 'name'">
+        {{savedPatient.name}}
+        <button (click)="edit('name')">✏️</button>
+      </span>
+
+      <div *ngIf="editField === 'name'">
+        <input [(ngModel)]="name">
+        <button (click)="saveField('name')">💾</button>
+      </div>
+    </div>
+
+    <!-- EDAD -->
+    <div class="field">
+      <label>Edad</label>
+
+      <span *ngIf="editField !== 'age'">
+        {{savedPatient.age}}
+        <button (click)="edit('age')">✏️</button>
+      </span>
+
+      <div *ngIf="editField === 'age'">
+        <input type="number" [(ngModel)]="age">
+        <button (click)="saveField('age')">💾</button>
+      </div>
+    </div>
+
+    <!-- TELÉFONO -->
+    <div class="field">
+      <label>Teléfono</label>
+
+      <span *ngIf="editField !== 'phone'">
+        {{savedPatient.phone}}
+        <button (click)="edit('phone')">✏️</button>
+      </span>
+
+      <div *ngIf="editField === 'phone'">
+        <input [(ngModel)]="phone">
+        <button (click)="saveField('phone')">💾</button>
+      </div>
+    </div>
+
+    <!-- CORREO -->
+    <div class="field">
+      <label>Correo</label>
+
+      <span *ngIf="editField !== 'email'">
+        {{savedPatient.email}}
+        <button (click)="edit('email')">✏️</button>
+      </span>
+
+      <div *ngIf="editField === 'email'">
+        <input [(ngModel)]="email">
+        <button (click)="saveField('email')">💾</button>
+      </div>
+    </div>
+
+    <p class="sessions">
+      Sesiones realizadas: <b>{{totalSessions}}</b>
+    </p>
+
+  </div>
+
+</div>

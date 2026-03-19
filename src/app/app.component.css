@@ -1,0 +1,11 @@
+
+.main-content{
+margin-left:220px;
+padding:20px;
+transition:0.3s;
+}
+
+/* cuando sidebar colapsa */
+.sidebar.collapsed ~ .main-content{
+margin-left:70px;
+}  

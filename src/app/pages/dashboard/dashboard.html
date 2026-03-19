@@ -1,0 +1,85 @@
+<div class="layout">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2 class="logo">🧠 Psicología</h2>
+
+<ul>
+
+<li (click)="goDashboard()">🏠 Inicio</li>
+
+<li (click)="goAppointments()">📅 Citas</li>
+
+<li (click)="goPatients()">👤 Perfil</li>
+
+<li (click)="goHistory()">📄 Historial</li>
+
+</ul>
+
+</div>
+
+<!-- CONTENIDO -->
+
+<div class="content">
+
+<h1 class="welcome">
+Bienvenido {{username}} 👋
+</h1>
+
+<p class="subtitle">
+Gestiona tus sesiones psicológicas
+</p>
+
+<div class="cards">
+
+<div class="card">
+
+<h2>📊 Sesiones realizadas</h2>
+
+<p class="number">{{sessionsCount}}</p>
+
+<button (click)="goHistory()">Ver historial</button>
+
+</div>
+
+<div class="card" *ngIf="nextAppointment">
+
+<h2>📅 Próxima cita</h2>
+
+<p>{{nextAppointment.date}}</p>
+
+<p>{{nextAppointment.time}}</p>
+
+<button (click)="goAppointments()">Ver cita</button>
+
+</div>
+
+<div class="card">
+
+<h2>➕ Nueva cita</h2>
+
+<p>Agenda una nueva sesión psicológica</p>
+
+<button (click)="goAppointments()">Crear cita</button>
+
+</div>
+
+</div>
+
+<div class="motivation">
+
+<h2>💬 Mensaje del día</h2>
+
+<p>
+"Cuidar tu salud mental es una inversión en tu bienestar."
+</p>
+
+</div>
+
+</div>
+<button class="logout-btn" (click)="logout()">
+Cerrar sesión
+</button>
+</div>

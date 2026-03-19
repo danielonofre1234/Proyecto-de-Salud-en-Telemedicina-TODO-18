@@ -1,0 +1,150 @@
+*{
+  box-sizing:border-box;
+}
+
+/* CONTENEDOR */
+
+.login-container{
+  display:flex;
+  height:100vh;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* LADO IZQUIERDO */
+
+.login-left{
+  flex:1;
+  background:#0f172a;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+}
+
+/* TITULO */
+
+.title{
+  color:white;
+  font-size:60px;
+  margin-bottom:40px;
+  text-align:center;
+}
+
+.subtitle{
+  color:white;
+  font-size:22px;
+  margin-bottom:30px;
+}
+
+.login-form-title{
+  font-size:28px;
+  margin-bottom:25px;
+}
+
+/* IMAGEN */
+
+.login-left img{
+  width:110%;
+  max-width:750px;
+}
+
+/* LADO DERECHO */
+
+.login-right{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:60px;
+  background:white;
+}
+
+.subtitle{
+  color:gray;
+  margin-bottom:30px;
+  font-size:18px;
+}
+
+/* INPUTS */
+
+.input-group{
+  display:flex;
+  flex-direction:column;
+  margin-bottom:20px;
+}
+
+.input-group label{
+  margin-bottom:5px;
+  font-size:14px;
+}
+
+.input-group input{
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+.password-container{
+
+position:relative;
+display:flex;
+align-items:center;
+margin-bottom:20px; /* 👈 ESTO SEPARA DEL BOTÓN */
+
+}
+
+.password-container input{
+
+width:100%;
+padding:10px;
+padding-right:40px;
+border-radius:6px;
+border:1px solid #ccc;
+
+}
+
+.password-container button{
+
+position:absolute;
+right:5px;
+background:none;
+border:none;
+cursor:pointer;
+font-size:18px;
+
+}
+
+/* BOTON */
+
+.btn-login{
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  background:#2563eb;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.btn-login:hover{
+  background:#1e40af;
+}
+
+/* LINKS */
+
+.extra-links{
+  margin-top:20px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.extra-links a{
+  text-decoration:none;
+  color:#2563eb;
+  font-size:14px;
+}
+
+.extra-links a:hover{
+  text-decoration:underline;
+}

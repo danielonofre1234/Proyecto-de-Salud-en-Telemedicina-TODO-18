@@ -1,0 +1,29 @@
+<div class="video-page">
+
+<h1>Sesión en progreso</h1>
+
+<div class="timer">
+⏱ {{minutes}} : {{seconds < 10 ? '0'+seconds : seconds}}
+</div>
+
+<div class="video-container">
+
+<video
+#videoElement
+autoplay
+playsinline
+muted
+class="video-player">
+</video>
+
+</div>
+
+<div class="controls">
+
+<button class="finish-btn" (click)="finishSession()">
+Finalizar sesión
+</button>
+
+</div>
+
+</div>

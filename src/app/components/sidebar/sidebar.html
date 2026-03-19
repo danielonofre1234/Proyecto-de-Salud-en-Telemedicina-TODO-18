@@ -1,0 +1,40 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+
+<!-- HEADER -->
+<div class="header">
+  <h2 *ngIf="!isCollapsed">🧠 Psicología</h2>
+  <button (click)="toggleSidebar()">☰</button>
+</div>
+
+<!-- USER -->
+<div class="user" *ngIf="!isCollapsed">
+  👤 {{ userName }}
+</div>
+
+<!-- MENU -->
+<ul>
+
+<li (click)="goDashboard()">
+  🏠 <span *ngIf="!isCollapsed">Inicio</span>
+</li>
+
+<li (click)="goAppointments()">
+  📅 <span *ngIf="!isCollapsed">Citas</span>
+</li>
+
+<li (click)="goPatients()">
+  👤 <span *ngIf="!isCollapsed">Perfil</span>
+</li>
+
+<li (click)="goHistory()">
+  📄 <span *ngIf="!isCollapsed">Historial</span>
+</li>
+
+</ul>
+
+<!-- LOGOUT -->
+<button class="logout-btn" (click)="logout()">
+  🚪 <span *ngIf="!isCollapsed">Cerrar sesión</span>
+</button>
+
+</div>

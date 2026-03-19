@@ -1,0 +1,51 @@
+<div class="history-page">
+
+  <!-- BOTÓN VOLVER -->
+  <button class="back-btn" (click)="goBack()">
+    ⬅ Volver
+  </button>
+
+  <!-- SOLO UN TÍTULO (quitamos duplicado) -->
+  <h1 class="title">Historial de Sesiones</h1>
+
+  <!-- VACÍO -->
+  <div *ngIf="sessions.length === 0" class="empty">
+    Aún no tienes sesiones registradas
+  </div>
+
+  <!-- LISTA -->
+  <div class="sessions-container" *ngIf="sessions.length > 0">
+
+    <div class="session-card" *ngFor="let s of sessions">
+
+      <div class="session-header">
+
+        <span class="session-date">
+          📅 {{s.date}}
+        </span>
+
+        <span class="session-duration">
+          ⏱ {{s.duration}} minutos
+        </span>
+
+      </div>
+
+      <div class="session-body">
+
+        <div class="notes">
+          <h3>Notas del profesional</h3>
+          <p>{{s.notes}}</p>
+        </div>
+
+        <div class="progress">
+          <h3>Progreso del paciente</h3>
+          <p>{{s.progress}}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

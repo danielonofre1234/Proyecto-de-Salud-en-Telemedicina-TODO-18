@@ -1,0 +1,72 @@
+<div class="login-container">
+
+  <!-- LADO IZQUIERDO -->
+  <div class="login-left">
+
+    <h1 class="title">
+      "Telepsicología"
+    </h1>
+
+    <p class="subtitle">
+      Sistema de salud remota
+    </p>
+
+    <img src="telepsicologia.png" alt="Telepsicologia">
+
+  </div>
+
+  <!-- LADO DERECHO -->
+  <div class="login-right">
+
+    <h2 class="login-form-title">
+      INGRESAR
+    </h2>
+
+    <form (ngSubmit)="login()">
+
+      <div class="input-group">
+        <label>Correo electrónico</label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+        >
+      </div>
+
+      <div class="password-container">
+
+      <input 
+        [attr.type]="showPassword ? 'text' : 'password'" 
+        [(ngModel)]="password" 
+        name="password"
+        placeholder="Contraseña"
+      />
+
+      <button type="button" (click)="togglePassword()">
+        {{ showPassword ? '🙈' : '👁' }}
+      </button>
+
+      </div>
+
+      <button type="submit" class="btn-login">
+        Iniciar sesión
+      </button>
+
+    </form>
+
+    <div class="extra-links">
+
+      <a routerLink="/forgot-password">
+        Olvidé mi contraseña
+      </a>
+
+      <a routerLink="/register">
+        Crear cuenta
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
