@@ -1,39 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [RouterModule],
-  templateUrl: './navbar.html',
-  styleUrl: './navbar.css'
+selector: 'app-navbar',
+standalone: true,
+imports: [CommonModule],
+templateUrl: './navbar.html',
+styleUrl: './navbar.css'
 })
 export class NavbarComponent {
 
-  userName: string = '';
+username:string = '';
+role:string = '';
 
-  constructor(private router: Router) {}
+constructor(
+private router:Router,
+@Inject(PLATFORM_ID) private platformId:Object
+){}
 
-  ngOnInit(){
+ngOnInit(){
 
-    const user = localStorage.getItem('loggedUser');
+if(isPlatformBrowser(this.platformId)){
 
-    if(user){
-      const data = JSON.parse(user);
-      this.userName = data.name;
-    }
+const user = JSON.parse(localStorage.getItem('loggedUser') || '{}');
 
-  }
+this.username = user.name || '';
+this.role = user.role || '';
 
-  logout(){
+}
 
-    // eliminar sesión
-    localStorage.removeItem('loggedUser');
+}
 
-    // regresar al login
-    this.router.navigate(['/login']);
+logout(){
 
-  }
+if(isPlatformBrowser(this.platformId)){
+localStorage.removeItem('loggedUser');
+}
+
+this.router.navigate(['/login']);
+
+}
 
 }

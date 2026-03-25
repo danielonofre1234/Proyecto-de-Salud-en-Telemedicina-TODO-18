@@ -1,47 +1,55 @@
 <div class="appointments-page">
 
-<h1 class="title">Citas Psicológicas</h1>
+<!-- NAVBAR (lo mantienes) -->
+<app-navbar></app-navbar>
 
-<button class="back-btn" (click)="goBack()">
-⬅ Volver
-</button>
+<h1>📅 Gestión de citas</h1>
 
-<div class="section">
+<button class="back-btn" (click)="goBack()">⬅ Volver</button>
 
-<h2>Agendar nueva cita</h2>
+<!-- FORMULARIO -->
+<div class="form">
 
-<input type="date" [(ngModel)]="date">
+<h2>Agendar cita</h2>
 
-<input type="time" [(ngModel)]="time">
+<input [(ngModel)]="patientName" placeholder="Nombre del paciente">
+
+<input [(ngModel)]="psychologist" placeholder="Psicólogo">
+
+<input [(ngModel)]="date" type="date">
+
+<input [(ngModel)]="time" type="time">
+
+<input [(ngModel)]="topic" placeholder="Motivo de la sesión">
 
 <button (click)="createAppointment()">
-Agendar cita
+Crear cita
 </button>
 
 </div>
 
-<div class="section">
-
-<h2>Tus citas</h2>
+<!-- LISTA DE CITAS -->
+<h2>Mis citas</h2>
 
 <div *ngIf="appointments.length === 0">
-<p>No tienes citas registradas</p>
+No hay citas registradas
 </div>
 
-<div *ngFor="let a of appointments; let i = index" class="appointment-card">
+<div class="appointments-list">
 
-<p><b>Fecha:</b> {{a.date}}</p>
+<div class="card" *ngFor="let a of appointments; let i = index">
 
-<p><b>Hora:</b> {{a.time}}</p>
+<h3>{{a.patientName}}</h3>
 
-<p><b>Estado:</b> {{a.status}}</p>
+<p><b>🧠 Psicólogo:</b> {{a.psychologist}}</p>
+<p><b>📅 Fecha:</b> {{a.date}}</p>
+<p><b>⏰ Hora:</b> {{a.time}}</p>
+<p><b>🧩 Motivo:</b> {{a.topic}}</p>
 
-<button
-(click)="enterSession(i)"
-[disabled]="a.status === 'Sin respuesta'">
+<p><b>📌 Estado:</b> {{a.status}}</p>
 
+<button (click)="enterSession(i)">
 Entrar a sesión
-
 </button>
 
 </div>

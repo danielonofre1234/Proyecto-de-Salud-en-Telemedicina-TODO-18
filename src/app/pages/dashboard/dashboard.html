@@ -78,8 +78,45 @@ Gestiona tus sesiones psicológicas
 
 </div>
 
+<!-- 🔽 NUEVA SECCIÓN PARA ROLES -->
+
+<div class="sessions-role">
+
+<h2 *ngIf="role === 'psicologo'">🧠 Sesiones con pacientes</h2>
+<h2 *ngIf="role === 'cliente'">👤 Mis sesiones</h2>
+
+<div class="sessions-grid">
+
+<div class="session-card" *ngFor="let s of sessions">
+
+<h3 *ngIf="role === 'psicologo'">
+Paciente: {{s.patientName}}
+</h3>
+
+<h3 *ngIf="role === 'cliente'">
+Psicólogo: {{s.psychologist}}
+</h3>
+
+<p><b>📅 Fecha:</b> {{s.date}}</p>
+<p><b>⏰ Hora:</b> {{s.time}}</p>
+<p><b>🧩 Tema:</b> {{s.topic}}</p>
+<p><b>📌 Estado:</b> {{s.status}}</p>
+
+<div *ngIf="s.notes">
+<p><b>📝 Anotaciones:</b></p>
+<p class="notes">{{s.notes}}</p>
 </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 <button class="logout-btn" (click)="logout()">
 Cerrar sesión
 </button>
+
 </div>

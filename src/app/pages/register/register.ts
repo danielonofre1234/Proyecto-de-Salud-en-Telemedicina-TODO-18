@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, RouterModule, CommonModule],
   templateUrl: './register.html',
   styleUrl: './register.css'
 })
@@ -15,58 +16,83 @@ export class Register {
   name: string = '';
   email: string = '';
   password: string = '';
+  confirmPassword: string = '';
+  role: string = 'client'; // 🔥 corregido
+
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
+
+  errorMessage: string = '';
 
   constructor(private router: Router) {}
 
   register(){
 
-    // 🔴 VALIDAR CAMPOS
-    if(!this.name || !this.email || !this.password){
-      alert('Completa todos los campos');
+    this.errorMessage = '';
+
+    // validar campos vacíos
+    if(!this.name || !this.email || !this.password || !this.confirmPassword){
+      this.errorMessage = 'Completa todos los campos';
       return;
     }
 
-    // 🧠 LIMPIAR DATOS
-    const nameTrim = this.name.trim();
-    const emailTrim = this.email.trim().toLowerCase();
-    const passwordTrim = this.password.trim();
+    // validar mínimo 8 caracteres
+    if(this.password.length < 8){
+      this.errorMessage = 'La contraseña debe tener mínimo 8 caracteres';
+      return;
+    }
 
-    // 📦 OBTENER USUARIOS
+    // validar mayúscula y número
+    const regex = /^(?=.*[A-Z])(?=.*[0-9])/;
+
+    if(!regex.test(this.password)){
+      this.errorMessage = 'Debe tener al menos una mayúscula y un número';
+      return;
+    }
+
+    // validar confirmación
+    if(this.password !== this.confirmPassword){
+      this.errorMessage = 'Las contraseñas no coinciden';
+      return;
+    }
+
+    // obtener usuarios
     const users = JSON.parse(localStorage.getItem('users') || '[]');
 
-    // 🔍 VERIFICAR SI YA EXISTE
-    const exists = users.find((u:any) => u.email === emailTrim);
+    // verificar existente
+    const exists = users.find((u:any) => u.email === this.email);
 
     if(exists){
-      alert('El usuario ya está registrado');
+      this.errorMessage = 'El usuario ya está registrado';
       return;
     }
 
-    // 👤 CREAR USUARIO LIMPIO
+    // crear usuario
     const newUser = {
       id: Date.now(),
-      name: nameTrim,
-      email: emailTrim,
-      password: passwordTrim,
+      name: this.name,
+      email: this.email,
+      password: this.password,
+      role: this.role,
       patients: [],
       history: []
     };
 
-    // 💾 GUARDAR
     users.push(newUser);
+
     localStorage.setItem('users', JSON.stringify(users));
 
-    // ✅ MENSAJE
     alert('Registro exitoso');
 
-    // 🔄 LIMPIAR CAMPOS (opcional pero pro)
-    this.name = '';
-    this.email = '';
-    this.password = '';
-
-    // 🚀 REDIRIGIR
     this.router.navigate(['/login']);
+  }
 
+  togglePassword(){
+    this.showPassword = !this.showPassword;
+  }
+
+  toggleConfirmPassword(){
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 
 }

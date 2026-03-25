@@ -17,6 +17,11 @@ export class Appointments {
 date:string='';
 time:string='';
 
+/* NUEVO */
+patientName:string='';
+psychologist:string='';
+topic:string='';
+
 appointments:any[]=[];
 
 constructor(
@@ -48,11 +53,21 @@ alert("Selecciona fecha y hora");
 return;
 }
 
+if(!this.patientName){
+alert("Escribe tu nombre");
+return;
+}
+
 const appointment = {
 date:this.date,
 time:this.time,
-status:"Pendiente",
-entered:false
+patientName:this.patientName,
+psychologist:"", // aún no asignado
+topic:this.topic,
+status:"Solicitada",
+entered:false,
+notes:"",
+link:"" // el psicólogo lo crea
 };
 
 this.appointments.push(appointment);
@@ -61,7 +76,8 @@ localStorage.setItem("appointments",JSON.stringify(this.appointments));
 
 this.date='';
 this.time='';
-
+this.patientName='';
+this.topic='';
 }
 
 enterSession(i:number){
@@ -69,9 +85,7 @@ enterSession(i:number){
 const appointment = this.appointments[i];
 
 const now = new Date();
-
 const appointmentTime = new Date(appointment.date + "T" + appointment.time);
-
 const allowTime = new Date(appointmentTime.getTime() - 10 * 60000);
 
 if(now < allowTime){
@@ -91,9 +105,8 @@ appointment.status="En sesión";
 
 localStorage.setItem("appointments",JSON.stringify(this.appointments));
 
-localStorage.setItem("current_session", JSON.stringify(appointment));
-
-this.router.navigate(['/video-session']);
+/* ABRIR GOOGLE MEET */
+window.open(appointment.link,'_blank');
 
 }
 

@@ -1,59 +1,55 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule, RouterModule],
-  templateUrl: './login.html',
-  styleUrl: './login.css'
+selector: 'app-login',
+standalone: true,
+imports: [FormsModule, CommonModule, RouterModule],
+templateUrl: './login.html',
+styleUrl: './login.css'
 })
 export class Login {
 
-  email: string = '';
-  password: string = '';
-  showPassword:boolean = false;
+email:string='';
+password:string='';
+showPassword:boolean=false;
 
-  constructor(private router: Router, private auth:AuthService) {}
+constructor(private router:Router){}
 
-  togglePassword(){
-  this.showPassword = !this.showPassword;
-  } 
+login(){
 
- login(){
-
-// limpiar espacios
-const emailTrim = this.email?.trim();
-const passwordTrim = this.password?.trim();
-
-// validar campos
-if(!emailTrim || !passwordTrim){
-  alert('Debes ingresar correo y contraseña');
-  return;
-}
-
-// obtener usuarios
 const users = JSON.parse(localStorage.getItem('users') || '[]');
 
-// buscar usuario
-const userFound = users.find((u:any) => 
-  u.email === emailTrim && u.password === passwordTrim
+const user = users.find((u:any)=>
+u.email === this.email &&
+u.password === this.password
 );
 
-if(!userFound){
-  alert('Correo o contraseña incorrectos');
-  return;
+if(!user){
+alert('Correo o contraseña incorrecta');
+return;
 }
 
-// ✅ guardar sesión correctamente
-this.auth.login(userFound);
+localStorage.setItem('loggedUser', JSON.stringify(user));
 
-// redirigir
+/* REDIRECCION POR ROL */
+if(user.role === 'admin'){
+this.router.navigate(['/admin']);
+}
+else if(user.role === 'psicologo'){
+this.router.navigate(['/psychologist']);
+}
+else{
 this.router.navigate(['/dashboard']);
+}
 
+}
+
+togglePassword(){
+this.showPassword = !this.showPassword;
 }
 
 }

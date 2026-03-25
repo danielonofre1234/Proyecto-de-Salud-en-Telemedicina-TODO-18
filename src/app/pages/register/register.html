@@ -1,52 +1,52 @@
-<div class="register-container">
+<div class="register-box">
 
-  <div class="register-card">
+<h2>Crear cuenta</h2>
 
-    <h1>Crear Cuenta</h1>
-    <p class="subtitle">Regístrate para acceder al sistema</p>
+<input 
+type="text" 
+placeholder="Nombre completo"
+[(ngModel)]="name"
+>
 
-    <form (ngSubmit)="register()">
+<input 
+type="email" 
+placeholder="Correo electrónico"
+[(ngModel)]="email"
+>
 
-      <div class="form-group">
-        <label>Nombre completo</label>
-        <input
-          type="text"
-          name="name"
-          [(ngModel)]="name"
-          required
-        >
-      </div>
+<!-- PASSWORD -->
+<div class="password-container">
+<input 
+[type]="showPassword ? 'text' : 'password'"
+placeholder="Contraseña"
+[(ngModel)]="password"
+>
+<button type="button" (click)="togglePassword()">👁</button>
+</div>
 
-      <div class="form-group">
-        <label>Correo electrónico</label>
-        <input
-          type="email"
-          name="email"
-          [(ngModel)]="email"
-          required
-        >
-      </div>
+<!-- CONFIRM PASSWORD -->
+<div class="password-container">
+<input 
+[type]="showConfirmPassword ? 'text' : 'password'"
+placeholder="Confirmar contraseña"
+[(ngModel)]="confirmPassword"
+>
+<button type="button" (click)="toggleConfirmPassword()">👁</button>
+</div>
 
-      <div class="form-group">
-        <label>Contraseña</label>
-        <input
-          type="password"
-          name="password"
-          [(ngModel)]="password"
-          required
-        >
-      </div>
+<p class="error" *ngIf="errorMessage">
+{{errorMessage}}
+</p>
 
-      <button type="submit" class="btn-register">
-        Crear cuenta
-      </button>
+<label>Tipo de usuario</label>
+<select [(ngModel)]="role">
+<option value="cliente">Cliente</option>
+<option value="psicologo">Psicólogo</option>
+<option value="admin">Administrador</option>
+</select>
 
-    </form>
-
-    <div class="back-login">
-      <a routerLink="/login">Volver al login</a>
-    </div>
-
-  </div>
+<button class="register-btn" (click)="register()">
+Crear cuenta
+</button>
 
 </div>

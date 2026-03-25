@@ -8,6 +8,8 @@ import { Patients } from './pages/patients/patients';
 import { History } from './pages/history/history';
 import { ForgotPassword } from './pages/forgot-password/forgot-password';
 import { VideoSessionComponent } from './pages/video-session/video-session';
+import { Psychologist } from './pages/psychologist/psychologist';
+import { Admin } from './pages/admin/admin';
 
 export const routes: Routes = [
 
@@ -28,6 +30,10 @@ export const routes: Routes = [
   { path: 'history', component: History },
 
   { path: 'video-session', component: VideoSessionComponent },
+
+  { path: 'psychologist', component: Psychologist },
+
+  { path: 'admin', component: Admin },
 
   { path: '**', redirectTo: '' }
 

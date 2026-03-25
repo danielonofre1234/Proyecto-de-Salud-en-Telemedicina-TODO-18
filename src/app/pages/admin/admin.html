@@ -1,0 +1,30 @@
+<div class="admin-container">
+
+<div class="header">
+<h1>Panel Administrador</h1>
+<button class="logout-btn" (click)="logout()">Cerrar sesión</button>
+</div>
+
+<div class="card">
+
+<h2>Usuarios registrados</h2>
+
+<table>
+
+<tr>
+<th>Nombre</th>
+<th>Email</th>
+<th>Rol</th>
+</tr>
+
+<tr *ngFor="let u of users">
+<td>{{u.name}}</td>
+<td>{{u.email}}</td>
+<td>{{u.role}}</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
