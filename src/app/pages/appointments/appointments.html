@@ -12,17 +12,52 @@
 
 <h2>Agendar cita</h2>
 
-<input [(ngModel)]="patientName" placeholder="Nombre del paciente">
+<div class="form-group">
+<label>👨‍⚕️ Seleccionar psicólogo</label>
+<select [(ngModel)]="selectedPsychologist" class="select-pro">
+<option value="">Seleccionar psicólogo</option>
+<option *ngFor="let p of psychologists" [value]="p.name">
+{{p.name}}
+</option>
+</select>
+</div>
 
-<input [(ngModel)]="psychologist" placeholder="Psicólogo">
+<div class="form-group">
+<label>📅 Fecha</label>
+<input 
+[(ngModel)]="date" 
+type="date" 
+class="input-pro"
+[class.day-full]="isDayFull()"
+[min]="today"
+>
+</div>
 
-<input [(ngModel)]="date" type="date">
+<div class="form-group">
+<label>⏰ Hora</label>
 
-<input [(ngModel)]="time" type="time">
+<div class="time-picker">
 
-<input [(ngModel)]="topic" placeholder="Motivo de la sesión">
+<button 
+*ngFor="let t of timeSlots"
+(click)="selectTime(t)"
+[class.active]="time === t"
+[disabled]="isTimeBlocked(t)"
+class="time-btn"
+>
+{{t}}
+</button>
 
-<button (click)="createAppointment()">
+</div>
+
+</div>
+
+<div class="form-group">
+<label>🧠 Motivo</label>
+<input [(ngModel)]="topic" placeholder="Motivo de la sesión" class="input-pro">
+</div>
+
+<button class="btn-create" (click)="createAppointment()">
 Crear cita
 </button>
 

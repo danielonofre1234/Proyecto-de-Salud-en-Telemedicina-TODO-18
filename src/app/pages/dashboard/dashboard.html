@@ -1,27 +1,20 @@
 <div class="layout">
 
 <!-- SIDEBAR -->
-
 <div class="sidebar">
 
 <h2 class="logo">🧠 Psicología</h2>
 
 <ul>
-
 <li (click)="goDashboard()">🏠 Inicio</li>
-
 <li (click)="goAppointments()">📅 Citas</li>
-
 <li (click)="goPatients()">👤 Perfil</li>
-
 <li (click)="goHistory()">📄 Historial</li>
-
 </ul>
 
 </div>
 
 <!-- CONTENIDO -->
-
 <div class="content">
 
 <h1 class="welcome">
@@ -35,55 +28,38 @@ Gestiona tus sesiones psicológicas
 <div class="cards">
 
 <div class="card">
-
 <h2>📊 Sesiones realizadas</h2>
-
 <p class="number">{{sessionsCount}}</p>
-
 <button (click)="goHistory()">Ver historial</button>
-
 </div>
 
 <div class="card" *ngIf="nextAppointment">
-
 <h2>📅 Próxima cita</h2>
-
 <p>{{nextAppointment.date}}</p>
-
 <p>{{nextAppointment.time}}</p>
-
 <button (click)="goAppointments()">Ver cita</button>
-
 </div>
 
 <div class="card">
-
 <h2>➕ Nueva cita</h2>
-
 <p>Agenda una nueva sesión psicológica</p>
-
 <button (click)="goAppointments()">Crear cita</button>
-
 </div>
 
 </div>
 
 <div class="motivation">
-
 <h2>💬 Mensaje del día</h2>
-
 <p>
 "Cuidar tu salud mental es una inversión en tu bienestar."
 </p>
-
 </div>
 
-<!-- 🔽 NUEVA SECCIÓN PARA ROLES -->
-
+<!-- 🔽 HISTORIAL / SESIONES -->
 <div class="sessions-role">
 
 <h2 *ngIf="role === 'psicologo'">🧠 Sesiones con pacientes</h2>
-<h2 *ngIf="role === 'cliente'">👤 Mis sesiones</h2>
+<h2 *ngIf="role === 'cliente'">👤 Historial de sesiones</h2>
 
 <div class="sessions-grid">
 
@@ -99,7 +75,7 @@ Psicólogo: {{s.psychologist}}
 
 <p><b>📅 Fecha:</b> {{s.date}}</p>
 <p><b>⏰ Hora:</b> {{s.time}}</p>
-<p><b>🧩 Tema:</b> {{s.topic}}</p>
+<p><b>🧠 Tema:</b> {{s.topic}}</p>
 <p><b>📌 Estado:</b> {{s.status}}</p>
 
 <div *ngIf="s.notes">

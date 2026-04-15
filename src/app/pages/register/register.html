@@ -1,52 +1,134 @@
 <div class="register-box">
 
-<h2>Crear cuenta</h2>
+<h2 class="register-title">Crear cuenta</h2>
 
-<input 
-type="text" 
+<div class="input-group">
+<label>Nombre completo</label>
+<div class="input-icon">
+<span>👤</span>
+<input
+type="text"
 placeholder="Nombre completo"
 [(ngModel)]="name"
 >
+</div>
+</div>
 
-<input 
-type="email" 
+<div class="input-group">
+<label>Correo electrónico</label>
+<div class="input-icon">
+<span>📧</span>
+<input
+type="email"
 placeholder="Correo electrónico"
 [(ngModel)]="email"
+(ngModelChange)="validateEmail()"
 >
+</div>
+
+<p class="match error" *ngIf="emailInvalid">
+Correo no válido
+</p>
+
+</div>
 
 <!-- PASSWORD -->
+<div class="input-group">
+<label>Contraseña</label>
+
 <div class="password-container">
-<input 
+<input
 [type]="showPassword ? 'text' : 'password'"
 placeholder="Contraseña"
 [(ngModel)]="password"
+(ngModelChange)="checkPasswordStrength()"
 >
-<button type="button" (click)="togglePassword()">👁</button>
+<button type="button" (click)="togglePassword()">
+{{ showPassword ? '🙈' : '👁' }}
+</button>
+</div>
+
+<div class="password-strength">
+<div 
+class="strength-bar" 
+[style.width.%]="passwordStrength"
+[ngClass]="passwordStrengthClass"
+></div>
+</div>
+
+<p class="strength-text">
+{{passwordStrengthText}}
+</p>
+
 </div>
 
 <!-- CONFIRM PASSWORD -->
+<div class="input-group">
+<label>Confirmar contraseña</label>
 <div class="password-container">
-<input 
+<input
 [type]="showConfirmPassword ? 'text' : 'password'"
 placeholder="Confirmar contraseña"
 [(ngModel)]="confirmPassword"
+(ngModelChange)="checkPasswordsMatch()"
 >
-<button type="button" (click)="toggleConfirmPassword()">👁</button>
+<button type="button" (click)="toggleConfirmPassword()">
+{{ showConfirmPassword ? '🙈' : '👁' }}
+</button>
+</div>
+
+<p class="match success" *ngIf="passwordsMatch">
+Las contraseñas coinciden
+</p>
+
+<p class="match error" *ngIf="!passwordsMatch && confirmPassword">
+Las contraseñas no coinciden
+</p>
+
 </div>
 
 <p class="error" *ngIf="errorMessage">
 {{errorMessage}}
 </p>
 
+<div class="input-group">
 <label>Tipo de usuario</label>
+
 <select [(ngModel)]="role">
 <option value="cliente">Cliente</option>
 <option value="psicologo">Psicólogo</option>
-<option value="admin">Administrador</option>
-</select>
 
-<button class="register-btn" (click)="register()">
+<option value="admin" *ngIf="!adminExists">
+Administrador
+</option>
+
+</select>
+</div>
+
+<button 
+class="register-btn" 
+(click)="register()"
+[disabled]="!name || !email || !password || !confirmPassword || !passwordsMatch || emailInvalid"
+>
 Crear cuenta
 </button>
+
+<p class="success" *ngIf="successMessage">
+Cuenta creada correctamente
+</p>
+
+<div class="divider"></div>
+
+<div class="login-redirect">
+
+<p class="login-text">
+¿Ya tienes cuenta?
+</p>
+
+<a class="login-btn" routerLink="/login">
+Iniciar sesión
+</a>
+
+</div>
 
 </div>

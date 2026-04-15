@@ -2,9 +2,71 @@
 
 <div class="header">
 <h1>Panel Administrador</h1>
-<button class="logout-btn" (click)="logout()">Cerrar sesión</button>
+<button (click)="logout()">Cerrar sesión</button>
 </div>
 
+<!-- CREAR USUARIO -->
+<div class="card">
+
+<h2>Crear usuario</h2>
+
+<div class="form-grid">
+
+<input [(ngModel)]="name" placeholder="Nombre">
+<input [(ngModel)]="email" placeholder="Correo">
+
+<div class="password-wrapper">
+<input
+[(ngModel)]="password"
+(ngModelChange)="checkPasswordStrength()"
+placeholder="Contraseña">
+
+<div class="password-strength" *ngIf="password">
+<div
+class="strength-bar"
+[style.width.%]="passwordStrength"
+[class]="passwordStrengthClass">
+</div>
+</div>
+</div>
+
+<div class="password-wrapper">
+<input
+[(ngModel)]="confirmPassword"
+placeholder="Repetir contraseña">
+
+<small *ngIf="confirmPassword"
+[class.match]="password === confirmPassword"
+[class.no-match]="password !== confirmPassword">
+
+{{ password === confirmPassword ? 'Las contraseñas coinciden' : 'No coinciden' }}
+
+</small>
+</div>
+
+<select [(ngModel)]="role">
+<option value="cliente">Cliente</option>
+<option value="psicologo">Psicólogo</option>
+
+<option value="admin" *ngIf="!adminExists">
+Administrador
+</option>
+
+</select>
+
+</div>
+
+<button class="btn-create" (click)="createUser()">
+Crear usuario
+</button>
+
+<p *ngIf="errorMessage" style="color:#ef4444; margin-top:10px;">
+{{errorMessage}}
+</p>
+
+</div>
+
+<!-- LISTA -->
 <div class="card">
 
 <h2>Usuarios registrados</h2>
@@ -15,12 +77,27 @@
 <th>Nombre</th>
 <th>Email</th>
 <th>Rol</th>
+<th>Acciones</th>
 </tr>
 
 <tr *ngFor="let u of users">
+
 <td>{{u.name}}</td>
 <td>{{u.email}}</td>
 <td>{{u.role}}</td>
+
+<td class="actions">
+
+<button class="btn-login" (click)="loginAs(u)">
+Entrar
+</button>
+
+<button class="btn-delete" (click)="deleteUser(u)">
+Eliminar
+</button>
+
+</td>
+
 </tr>
 
 </table>

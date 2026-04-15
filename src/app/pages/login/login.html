@@ -4,7 +4,7 @@
   <div class="login-left">
 
     <h1 class="title">
-      "Telepsicología"
+      Telepsicología
     </h1>
 
     <p class="subtitle">
@@ -22,50 +22,131 @@
       INGRESAR
     </h2>
 
-    <form (ngSubmit)="login()">
+   <form *ngIf="step == 0" (ngSubmit)="login()" class="login-form">
 
+      <!-- EMAIL -->
       <div class="input-group">
         <label>Correo electrónico</label>
-        <input
-          type="email"
-          name="email"
-          [(ngModel)]="email"
-          required
-        >
+        <div class="input-icon">
+          <span>📧</span>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            required
+          >
+        </div>
       </div>
 
+      <!-- PASSWORD -->
       <div class="password-container">
+        <input
+          [attr.type]="showPassword ? 'text' : 'password'"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Contraseña"
+        />
 
-      <input 
-        [attr.type]="showPassword ? 'text' : 'password'" 
-        [(ngModel)]="password" 
-        name="password"
-        placeholder="Contraseña"
-      />
-
-      <button type="button" (click)="togglePassword()">
-        {{ showPassword ? '🙈' : '👁' }}
-      </button>
-
+        <button type="button" (click)="togglePassword()">
+          {{ showPassword ? '🙈' : '👁' }}
+        </button>
       </div>
 
+      <!-- RECORDAR -->
+      <label class="remember">
+        <input type="checkbox" [(ngModel)]="rememberEmail" name="rememberEmail">
+        Recordar correo
+      </label>
+
+      <!-- BOTON -->
       <button type="submit" class="btn-login">
         Iniciar sesión
       </button>
 
+      <!-- ERROR -->
+      <p class="error-message" *ngIf="loginError">
+        Correo o contraseña incorrectos
+      </p>
+
+      <!-- FORGOT -->
+<p class="forgot" (click)="step=1">
+¿Olvidaste tu contraseña?
+</p>
+
     </form>
 
-    <div class="extra-links">
+<!-- RECUPERACION -->
+<!-- RECUPERACION PROFESIONAL -->
+<div *ngIf="step > 0" class="recovery-wrapper">
 
-      <a routerLink="/forgot-password">
-        Olvidé mi contraseña
-      </a>
+  <div class="recovery-card">
 
-      <a routerLink="/register">
-        Crear cuenta
-      </a>
+    <h2 class="recovery-title">
+      {{ step==1 ? 'Recuperar contraseña' : step==2 ? 'Verificar código' : 'Nueva contraseña' }}
+    </h2>
 
+    <!-- PASO 1 -->
+    <div *ngIf="step==1">
+      <input
+        [(ngModel)]="recoveryEmail"
+        name="recoveryEmail"
+        placeholder="Correo registrado"
+      >
+
+      <button class="recovery-btn" (click)="sendRecoveryCode()">
+        Enviar código
+      </button>
     </div>
+
+    <!-- PASO 2 -->
+    <div *ngIf="step==2">
+      <input
+        [(ngModel)]="recoveryCode"
+        name="recoveryCode"
+        placeholder="Código de verificación"
+      >
+
+      <button class="recovery-btn" (click)="verifyCode()">
+        Verificar
+      </button>
+    </div>
+
+    <!-- PASO 3 -->
+    <div *ngIf="step==3">
+      <input
+        type="password"
+        [(ngModel)]="newPassword"
+        name="newPassword"
+        placeholder="Nueva contraseña"
+      >
+
+      <button class="recovery-btn" (click)="changePassword()">
+        Cambiar contraseña
+      </button>
+    </div>
+
+    <p class="back-login" (click)="step=0">
+      ← Volver al inicio de sesión
+    </p>
+
+  </div>
+
+</div>
+
+    <div class="divider"></div>
+
+    
+<div class="extra-links">
+
+  <p class="register-text">
+    ¿No tienes cuenta?
+  </p>
+
+  <a class="register-btn" routerLink="/register">
+    Crear cuenta
+  </a>
+
+</div>
 
   </div>
 

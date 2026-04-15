@@ -34,11 +34,55 @@ Cerrar sesión
 
 <h2>Crear sesión</h2>
 
+
 <div class="form-grid">
-<input [(ngModel)]="patientName" placeholder="Nombre del paciente">
-<input [(ngModel)]="date" type="date">
-<input [(ngModel)]="time" type="time">
+
+<select [(ngModel)]="patientType">
+<option value="existente">Paciente existente</option>
+<option value="nuevo">Paciente nuevo</option>
+</select>
+
+<!-- PACIENTE EXISTENTE -->
+<select *ngIf="patientType === 'existente'" [(ngModel)]="selectedClient">
+<option [ngValue]="null">Seleccionar cliente</option>
+
+<option *ngFor="let c of clients" [ngValue]="c">
+{{c.name}}
+</option>
+
+</select>
+
+<!-- PACIENTE NUEVO -->
+<input 
+*ngIf="patientType === 'nuevo'"
+[(ngModel)]="patientName"
+placeholder="Nombre del paciente nuevo"
+>
+
+<input 
+[(ngModel)]="date" 
+type="date"
+[class.full]="isDayFull()"
+[min]="getMinDate()"
+>
+
+<!-- HORAS DISPONIBLES -->
+<div class="time-picker">
+
+<button
+*ngFor="let t of timeSlots"
+(click)="selectTime(t)"
+[class.active]="time === t"
+[disabled]="isTimeBlocked(t)"
+class="time-btn"
+>
+{{t}}
+</button>
+
+</div>
+
 <input [(ngModel)]="topic" placeholder="Tema de la sesión">
+
 </div>
 
 <button class="btn-primary" (click)="createSession()">
@@ -77,24 +121,90 @@ Finalizar
 </div>
 </div>
 
-<!-- HISTORIAL -->
+<!-- LISTA DE CLIENTES -->
 <div class="card">
 
-<h2>Historial</h2>
+<h2>👥 Lista de clientes</h2>
 
-<div class="sessions-grid">
+<div class="clients-list">
 
-<div class="session-card history" *ngFor="let s of sessions">
+<div
+class="client-item"
+*ngFor="let file of patientFiles"
+(click)="selectPatient(file)"
+>
 
-<h3>{{s.patientName}}</h3>
+👤 {{file.patientName}}
 
-<p>📅 {{s.date}}</p>
-<p>🧠 {{s.topic}}</p>
-<p class="notes">📝 {{s.notes}}</p>
+</div>
 
 </div>
 
 </div>
+
+<!-- EXPEDIENTE DEL CLIENTE SELECCIONADO -->
+<div class="card" *ngIf="selectedPatient">
+
+<h2>📁 Expediente de {{selectedPatient.patientName}}</h2>
+
+<div class="actions">
+<button (click)="exportPatient(selectedPatient)">📄 Exportar</button>
+<button (click)="deletePatient(selectedPatient)" class="danger">🗑 Borrar</button>
+<button (click)="selectedPatient=null">Cerrar</button>
+</div>
+
+<div class="sessions-inside">
+
+<div class="session-card" *ngFor="let s of selectedSessions">
+
+<p><b>📅 Fecha:</b> {{s.date}}</p>
+<p><b>⏰ Hora:</b> {{s.time}}</p>
+<p><b>🧩 Tema:</b> {{s.topic}}</p>
+
+<div *ngIf="s.notes">
+<p><b>📝 Notas:</b></p>
+<p class="notes">{{s.notes}}</p>
+</div>
+
+<div class="session-actions">
+<button (click)="editNotes(s)">✏️ Editar</button>
+<button (click)="deleteSession(s)" class="danger">🗑 Eliminar</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GRAFICA EMOCIONAL -->
+<div class="card" *ngIf="selectedPatient">
+
+<h2>📈 Progreso emocional</h2>
+
+<div class="progress-chart">
+
+<div
+class="bar"
+*ngFor="let p of getProgress()"
+[style.height.%]="p.value"
+[style.background]="p.color"
+>
+<span>{{p.name}}</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- SUGERENCIA AUTOMATICA -->
+<div class="card" *ngIf="selectedPatient">
+
+<h2>🤖 Sugerencia automática</h2>
+
+<p class="ai-box">
+{{getSuggestion()}}
+</p>
 
 </div>
 

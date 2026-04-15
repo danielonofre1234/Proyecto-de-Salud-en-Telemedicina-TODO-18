@@ -54,7 +54,7 @@ border-color:#2563eb;
 box-shadow:0 0 0 2px rgba(37,99,235,0.1);
 }
 
-.form button{
+.form > button{
 padding:12px;
 border:none;
 border-radius:8px;
@@ -65,10 +65,9 @@ cursor:pointer;
 transition:0.2s;
 }
 
-.form button:hover{
+.form > button:hover{
 background:#1d4ed8;
 }
-
 /* LISTA DE CITAS */
 
 .appointments-list{
@@ -123,4 +122,134 @@ background:#15803d;
 text-align:center;
 color:#64748b;
 margin-top:20px;
+}
+
+.form{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+max-width:500px;
+margin:auto;
+}
+
+.form-group{
+display:flex;
+flex-direction:column;
+margin-bottom:15px;
+}
+
+.form-group label{
+font-weight:600;
+margin-bottom:5px;
+color:#444;
+}
+
+/* SELECT PRO */
+.select-pro{
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:14px;
+transition:0.2s;
+background:white;
+cursor:pointer;
+}
+
+.select-pro:focus{
+outline:none;
+border-color:#4CAF50;
+box-shadow:0 0 0 3px rgba(76,175,80,0.15);
+}
+
+/* INPUT PRO */
+.input-pro{
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:14px;
+transition:0.2s;
+}
+
+.input-pro:focus{
+outline:none;
+border-color:#4CAF50;
+box-shadow:0 0 0 3px rgba(76,175,80,0.15);
+}
+
+/* BOTON */
+.btn-create{
+width:100%;
+margin-top:10px;
+padding:12px;
+border:none;
+border-radius:10px;
+background:linear-gradient(135deg,#4CAF50,#43A047);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.2s;
+}
+
+.btn-create:hover{
+transform:translateY(-1px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.day-full{
+border:2px solid #ef4444;
+background:#fef2f2;
+}
+
+.time-picker{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+}
+
+.time-btn{
+padding:10px;
+border-radius:8px;
+border:1px solid #e5e7eb;
+background:white;
+cursor:pointer;
+transition:0.2s;
+font-weight:500;
+}
+
+/* disponible */
+.time-btn:hover{
+background:#f9fafb;
+}
+
+/* seleccionada */
+.time-btn.active{
+background:#f3f4f6;
+border:1px solid #9ca3af;
+}
+
+/* bloqueada */
+.time-btn:disabled{
+background:#fee2e2;
+color:#991b1b;
+border:1px solid #ef4444;
+cursor:not-allowed;
+opacity:1;
+}
+
+.time-btn{
+background:white !important;
+color:#111827 !important;
+}
+
+.time-btn.active{
+background:white !important;
+border:2px solid #9ca3af !important;
+color:#111827 !important;
+}
+
+.time-btn:disabled{
+background:#fee2e2 !important;
+color:#991b1b !important;
+border:1px solid #ef4444 !important;
 }

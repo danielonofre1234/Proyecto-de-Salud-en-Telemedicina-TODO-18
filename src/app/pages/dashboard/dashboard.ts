@@ -13,6 +13,7 @@ styleUrl:'./dashboard.css'
 
 export class DashboardComponent{
 
+history:any[] = [];
 username:string="Usuario";
 role:string="cliente";
 sessions:any[]=[];
@@ -39,29 +40,44 @@ this.username = user.name;
 this.role = user.role;
 }
 
-const allSessions = JSON.parse(localStorage.getItem('sessions') || '[]');
-
-if(this.role === 'psicologo'){
-this.sessions = allSessions.filter((s:any)=> 
-s.psychologist === this.username
-);
-}else{
-this.sessions = allSessions.filter((s:any)=> 
-s.patientName === this.username
-);
-}
-
+/* SOLO EN NAVEGADOR */
 if(typeof window !== 'undefined'){
 
-const history=JSON.parse(localStorage.getItem("sessions_history") || "[]");
-this.sessionsCount=history.length;
+const loggedUser = JSON.parse(localStorage.getItem('loggedUser') || '{}');
 
-const appointments=JSON.parse(localStorage.getItem("appointments") || "[]");
+if(this.role === 'psicologo'){
 
-const pending=appointments.find((a:any)=>a.status==="Pendiente");
+const allSessions = JSON.parse(localStorage.getItem('sessions') || '[]');
+
+this.sessions = allSessions.filter((s:any)=>
+s.psychologist?.trim() === this.username?.trim()
+);
+
+}else{
+
+const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+
+this.sessions = appointments.filter((a:any)=>
+a.clientId === loggedUser.id
+);
+
+}
+
+/* CONTADOR */
+this.sessionsCount = this.sessions.length;
+
+/* ORDENAR */
+this.sessions = [...this.sessions].reverse();
+
+/* PROXIMA CITA */
+const appointments = JSON.parse(localStorage.getItem("appointments") || "[]");
+
+const pending = appointments.find((a:any)=>
+a.clientId === loggedUser.id && a.status === "Pendiente"
+);
 
 if(pending){
-this.nextAppointment=pending;
+this.nextAppointment = pending;
 }
 
 }

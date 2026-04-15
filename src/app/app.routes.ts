@@ -35,6 +35,12 @@ export const routes: Routes = [
 
   { path: 'admin', component: Admin },
 
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 
+  
+{
+path: 'forgot-password',
+loadComponent: () => import('./forgot-password/forgot-password')
+.then(m => m.ForgotPassword)
+}
 ];
