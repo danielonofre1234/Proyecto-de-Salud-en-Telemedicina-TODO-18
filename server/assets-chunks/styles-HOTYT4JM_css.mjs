@@ -1,0 +1,2 @@
+export default `*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100%;overflow-x:hidden;font-family:Arial,Helvetica,sans-serif}.page-container{width:100%;max-width:100vw;min-height:100vh;overflow-x:hidden}img{max-width:100%;height:auto}button{cursor:pointer}input,button{max-width:100%}
+`;

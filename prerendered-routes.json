@@ -1,0 +1,15 @@
+{
+  "routes": {
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18": {},
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18/admin": {},
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18/appointments": {},
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18/dashboard": {},
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18/forgot-password": {},
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18/history": {},
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18/login": {},
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18/patients": {},
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18/psychologist": {},
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18/register": {},
+    "/Proyecto-de-Salud-en-Telemedicina-TODO-18/video-session": {}
+  }
+}
