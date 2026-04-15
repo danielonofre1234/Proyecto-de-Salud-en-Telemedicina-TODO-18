@@ -1,7 +1,7 @@
 export default `<!DOCTYPE html><html lang="en" data-beasties-container><head>
   <meta charset="utf-8">
   <title>ProyectoSaludRemota</title>
-  <base href="https://danielonofre1234.github.io/Proyecto-de-Salud-en-Telemedicina-TODO-18/">
+  <base href="/Proyecto-de-Salud-en-Telemedicina-TODO-18/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 <style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100%;overflow-x:hidden;font-family:Arial,Helvetica,sans-serif}button{cursor:pointer}input,button{max-width:100%}
@@ -20,9 +20,9 @@ Administrador
 Crear cuenta
 </button><!----><div _ngcontent-ng-c1285925084 class="divider"></div><div _ngcontent-ng-c1285925084 class="login-redirect"><p _ngcontent-ng-c1285925084 class="login-text">
 ¿Ya tienes cuenta?
-</p><a _ngcontent-ng-c1285925084 routerlink="/login" class="login-btn" href="https://danielonofre1234.github.io/Proyecto-de-Salud-en-Telemedicina-TODO-18/login" jsaction="click:;">
+</p><a _ngcontent-ng-c1285925084 routerlink="/login" class="login-btn" href="/Proyecto-de-Salud-en-Telemedicina-TODO-18/login" jsaction="click:;">
 Iniciar sesión
 </a></div></div></app-register><!----></app-root>
 <link rel="modulepreload" href="chunk-LV4Z7622.js"><script src="main-SIMMB5DD.js" type="module"></script>
 
-<script id="ng-state" type="application/json">{"__nghData__":[{"t":{"17":"t6","36":"t7","37":"t8","38":"t9","47":"t10","50":"t11"},"c":{"17":[],"36":[],"37":[],"38":[],"47":[{"i":"t10","r":1}],"50":[]}},{"c":{"0":[{"i":"c1285925084","r":1}]}}]}</script></body></html>`;
+<script id="ng-state" type="application/json">{"__nghData__":[{"t":{"17":"t15","36":"t16","37":"t17","38":"t18","47":"t19","50":"t20"},"c":{"17":[],"36":[],"37":[],"38":[],"47":[{"i":"t19","r":1}],"50":[]}},{"c":{"0":[{"i":"c1285925084","r":1}]}}]}</script></body></html>`;

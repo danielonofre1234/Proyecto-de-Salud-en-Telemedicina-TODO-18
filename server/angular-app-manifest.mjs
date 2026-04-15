@@ -2,7 +2,7 @@
 export default {
   bootstrap: () => import('./main.server.mjs').then(m => m.default),
   inlineCriticalCss: true,
-  baseHref: 'https://danielonofre1234.github.io/Proyecto-de-Salud-en-Telemedicina-TODO-18/',
+  baseHref: '/Proyecto-de-Salud-en-Telemedicina-TODO-18/',
   locale: undefined,
   routes: [
   {
@@ -57,19 +57,19 @@ export default {
 ],
   entryPointToBrowserMapping: undefined,
   assets: {
-    'index.csr.html': {size: 830, hash: '143aee5fa2ba044e1b1003b9e32356731a538682ad88ccdc13e1a092509e4d6e', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 1084, hash: '4cb7383f5e141b637ab521cab40fafa332ef24237e09457b3eaaf0ee44497d1b', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
-    'dashboard/index.html': {size: 6033, hash: '826322cc93eee19dfcdc81ef074f802290c19d75895532e81017d8e63961a291', text: () => import('./assets-chunks/dashboard_index_html.mjs').then(m => m.default)},
-    'login/index.html': {size: 10282, hash: '9b20415795d09edaf376645873655ca3f19930b1ae3c327e4917f1477dfbbaad', text: () => import('./assets-chunks/login_index_html.mjs').then(m => m.default)},
-    'history/index.html': {size: 4729, hash: '58a1e609924283b74048156bdf0c5281bec7e326d3e80240131964924c086943', text: () => import('./assets-chunks/history_index_html.mjs').then(m => m.default)},
-    'psychologist/index.html': {size: 10959, hash: 'ee33256be50df2cc51fe2ac9c3d721e1074433fec722f6105eda503fea28b99d', text: () => import('./assets-chunks/psychologist_index_html.mjs').then(m => m.default)},
-    'register/index.html': {size: 9223, hash: '423ba63be3d46aff2e544cfb5951e49b607a5ad84cdd21eb69f5c1eff7ac5838', text: () => import('./assets-chunks/register_index_html.mjs').then(m => m.default)},
-    'index.html': {size: 10282, hash: '9b20415795d09edaf376645873655ca3f19930b1ae3c327e4917f1477dfbbaad', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
-    'video-session/index.html': {size: 3043, hash: '97e1656ade1191c4d0ad39ef52ef806a9909bf66cf22160e49e2ba18a0b3ddf6', text: () => import('./assets-chunks/video-session_index_html.mjs').then(m => m.default)},
-    'appointments/index.html': {size: 9939, hash: '639fc23f6242f6edd5c9ffd739c131307928b0aad978fcbfde310a182bea3188', text: () => import('./assets-chunks/appointments_index_html.mjs').then(m => m.default)},
-    'patients/index.html': {size: 4177, hash: '5c4ad57d242ab71d2e80322a31878609b03d82af360056fe1ac0b7c195b83ac3', text: () => import('./assets-chunks/patients_index_html.mjs').then(m => m.default)},
-    'admin/index.html': {size: 6615, hash: '59e62cc998a8948e035cfe93466775a9445c745dbe6660750149564ed995495a', text: () => import('./assets-chunks/admin_index_html.mjs').then(m => m.default)},
-    'forgot-password/index.html': {size: 4138, hash: '30e75003045bef39991bc0d8a1e89e316f093b88f3e7f7226c0619682435a28c', text: () => import('./assets-chunks/forgot-password_index_html.mjs').then(m => m.default)},
+    'index.csr.html': {size: 796, hash: 'e102cdec747c2733a008417190fd19c02c7987b9b574cdcbd9603c0daefc248b', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 1050, hash: 'a4f4155bcb875c52c98358cf6296a33ba464cedc1da224fe7027ea57aec6c057', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'dashboard/index.html': {size: 5999, hash: '714db6ec8a36a37b95a8a5d990cc807ac8d213e9deddf4a89f282e0748736c95', text: () => import('./assets-chunks/dashboard_index_html.mjs').then(m => m.default)},
+    'history/index.html': {size: 4695, hash: 'c8fb4f42b3045e8314bdf442ab69e0d48338661c16dd8bb9c34ce80a727e1f70', text: () => import('./assets-chunks/history_index_html.mjs').then(m => m.default)},
+    'psychologist/index.html': {size: 10928, hash: '5575be39b28ff8d6d6e01d6606ebd834a65559fa5e8e516ab9de3e4bbc9d4644', text: () => import('./assets-chunks/psychologist_index_html.mjs').then(m => m.default)},
+    'login/index.html': {size: 10214, hash: 'c64d70b4837ed74ad20bc3e4dafe04563f134f67d5501d4491152b78fc72e780', text: () => import('./assets-chunks/login_index_html.mjs').then(m => m.default)},
+    'appointments/index.html': {size: 9899, hash: '5ed6c1efdfba32663c742de0022cee171fbe49c3728f1ed7ded4c8b22a59d1e2', text: () => import('./assets-chunks/appointments_index_html.mjs').then(m => m.default)},
+    'index.html': {size: 10214, hash: 'c64d70b4837ed74ad20bc3e4dafe04563f134f67d5501d4491152b78fc72e780', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
+    'register/index.html': {size: 9159, hash: '764d6f9b6ad8f8675a1c4ae545bfc4ab62737da48e1f407701ea1a6507dcab1d', text: () => import('./assets-chunks/register_index_html.mjs').then(m => m.default)},
+    'video-session/index.html': {size: 3009, hash: 'c46368e55cde83ba56ea449a117cbb63b4fcd128c607f023f3d9b02f9445c314', text: () => import('./assets-chunks/video-session_index_html.mjs').then(m => m.default)},
+    'admin/index.html': {size: 6581, hash: '9f1925b067f4df00d15f46aac7a263d42202dfd06ab50c12495fb34e21d59c5e', text: () => import('./assets-chunks/admin_index_html.mjs').then(m => m.default)},
+    'forgot-password/index.html': {size: 4070, hash: 'a1e657a72a6d59451a4157aa68db745f6e9bcbdf95722a617eb61aa9995c0274', text: () => import('./assets-chunks/forgot-password_index_html.mjs').then(m => m.default)},
+    'patients/index.html': {size: 4140, hash: '9a5b505df702d1d00eb5d0d1e7d9182f9648612293b5920e30a2d34ce28feb0b', text: () => import('./assets-chunks/patients_index_html.mjs').then(m => m.default)},
     'styles-HOTYT4JM.css': {size: 293, hash: '43JoNVjB8uY', text: () => import('./assets-chunks/styles-HOTYT4JM_css.mjs').then(m => m.default)}
   },
 };

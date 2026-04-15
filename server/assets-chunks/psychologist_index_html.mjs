@@ -1,7 +1,7 @@
 export default `<!DOCTYPE html><html lang="en" data-beasties-container><head>
   <meta charset="utf-8">
   <title>ProyectoSaludRemota</title>
-  <base href="https://danielonofre1234.github.io/Proyecto-de-Salud-en-Telemedicina-TODO-18/">
+  <base href="/Proyecto-de-Salud-en-Telemedicina-TODO-18/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 <style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100%;overflow-x:hidden;font-family:Arial,Helvetica,sans-serif}button{cursor:pointer}input,button{max-width:100%}
@@ -35,4 +35,4 @@ Crear sesión
 </button></div><div _ngcontent-ng-c950337992 class="card"><h2 _ngcontent-ng-c950337992>Sesiones programadas</h2><div _ngcontent-ng-c950337992 class="sessions-grid"><!----></div></div><div _ngcontent-ng-c950337992 class="card"><h2 _ngcontent-ng-c950337992>👥 Lista de clientes</h2><div _ngcontent-ng-c950337992 class="clients-list"><!----></div></div><!----><!----><!----></div></app-psychologist><!----></app-root>
 <link rel="modulepreload" href="chunk-LV4Z7622.js"><script src="main-SIMMB5DD.js" type="module"></script>
 
-<script id="ng-state" type="application/json">{"__nghData__":[{"t":{"31":"t3","32":"t5","35":"t6","43":"t7","48":"t8","49":"t9","50":"t10","51":"t11"},"c":{"31":[{"i":"t3","r":1,"t":{"3":"t4"},"c":{"3":[]}}],"32":[],"35":[{"i":"t6","r":1,"x":10}],"43":[],"48":[],"49":[],"50":[],"51":[]}},{"c":{"0":[{"i":"c950337992","r":1}]}}]}</script></body></html>`;
+<script id="ng-state" type="application/json">{"__nghData__":[{"t":{"31":"t6","32":"t8","35":"t9","43":"t10","48":"t11","49":"t12","50":"t13","51":"t14"},"c":{"31":[{"i":"t6","r":1,"t":{"3":"t7"},"c":{"3":[]}}],"32":[],"35":[{"i":"t9","r":1,"x":10}],"43":[],"48":[],"49":[],"50":[],"51":[]}},{"c":{"0":[{"i":"c950337992","r":1}]}}]}</script></body></html>`;
